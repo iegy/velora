@@ -249,6 +249,9 @@ html[lang="ar"] .brand .wordmark{ font-family: var(--font-ar); }
   content:''; position:absolute; inset:14px; border: 1.5px solid rgba(255,255,255,0.55); border-radius: 10px;
 }
 .visual-panel .vp-mark{ width: 90px; height:90px; opacity:0.9; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15)); }
+.visual-panel.has-photo{ background-size: cover; background-position: center; }
+.visual-panel.has-photo::before{ display:none; }
+.visual-panel.has-photo .vp-mark{ display:none; }
 
 /* ---------- Portfolio placeholder tiles ---------- */
 .portfolio-filters{ display:flex; justify-content:center; gap: 12px; flex-wrap:wrap; margin-bottom: 40px; }

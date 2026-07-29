@@ -64,6 +64,79 @@ async function loadSocialList(){
   });
 }
 
+/* Reusable wiring for a single "site image" setting (hero photo, vision
+   photo, ...): live preview on file choice, compress+save, remove. */
+function wireImageSetting(idPrefix, fieldKey, saveLabel){
+  const fileInput = document.getElementById(idPrefix + "-file");
+  const preview = document.getElementById(idPrefix + "-preview");
+  const currentPreview = document.getElementById(idPrefix + "-current-preview");
+  const saveBtn = document.getElementById(idPrefix + "-save-btn");
+  const removeBtn = document.getElementById(idPrefix + "-remove-btn");
+  const msgId = idPrefix + "-msg";
+  if (!fileInput || !saveBtn) return null;
+
+  fileInput.addEventListener("change", () => {
+    preview.innerHTML = "";
+    const file = fileInput.files[0];
+    if (!file) return;
+    const img = document.createElement("img");
+    img.style.maxWidth = "220px";
+    img.style.borderRadius = "10px";
+    img.style.marginTop = "10px";
+    img.src = URL.createObjectURL(file);
+    preview.appendChild(img);
+  });
+
+  function showCurrent(url){
+    currentPreview.innerHTML = url
+      ? '<p class="hint">Current photo:</p><img src="' + url + '" style="max-width:220px;border-radius:10px;margin-bottom:14px;">'
+      : "";
+  }
+
+  saveBtn.addEventListener("click", async () => {
+    const file = fileInput.files[0];
+    if (!file) { setShowMsg(msgId, "error", "Please choose a photo first."); return; }
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Saving...";
+    try {
+      const { doc, setDoc } = window.veloraFirestoreMod;
+      const { dataUrl } = await compressImageToDataUrl(file, 900000);
+      await setDoc(doc(window.veloraDb, "settings", "site"), { [fieldKey]: dataUrl }, { merge: true });
+      setShowMsg(msgId, "success", "Photo updated! Check your site.");
+      showCurrent(dataUrl);
+      fileInput.value = "";
+      preview.innerHTML = "";
+    } catch (err) {
+      console.error("Velora image setting save error:", err);
+      if (err && err.message === "IMAGE_TOO_LARGE") {
+        setShowMsg(msgId, "error", "This photo is too large even after compression — try a smaller image.");
+      } else {
+        setShowMsg(msgId, "error", "Something went wrong. Please try again.");
+      }
+    } finally {
+      saveBtn.disabled = false;
+      saveBtn.textContent = saveLabel;
+    }
+  });
+
+  if (removeBtn) {
+    removeBtn.addEventListener("click", async () => {
+      if (!window.confirm("Remove this photo and go back to the default design?")) return;
+      try {
+        const { doc, setDoc } = window.veloraFirestoreMod;
+        await setDoc(doc(window.veloraDb, "settings", "site"), { [fieldKey]: "" }, { merge: true });
+        showCurrent(null);
+        setShowMsg(msgId, "success", "Photo removed.");
+      } catch (err) {
+        console.error("Velora image setting remove error:", err);
+        setShowMsg(msgId, "error", "Something went wrong. Please try again.");
+      }
+    });
+  }
+
+  return { showCurrent };
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const section = document.getElementById("settings-manager");
   const portfolioSection = document.getElementById("portfolio-manager");
@@ -74,25 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const saveBtn = document.getElementById("set-save-btn");
   const socAddBtn = document.getElementById("soc-add-btn");
 
-  const heroFile = document.getElementById("hero-file");
-  const heroPreview = document.getElementById("hero-preview");
-  const heroCurrentPreview = document.getElementById("hero-current-preview");
-  const heroSaveBtn = document.getElementById("hero-save-btn");
-  const heroRemoveBtn = document.getElementById("hero-remove-btn");
-
-  if (heroFile) {
-    heroFile.addEventListener("change", () => {
-      heroPreview.innerHTML = "";
-      const file = heroFile.files[0];
-      if (!file) return;
-      const img = document.createElement("img");
-      img.style.maxWidth = "220px";
-      img.style.borderRadius = "10px";
-      img.style.marginTop = "10px";
-      img.src = URL.createObjectURL(file);
-      heroPreview.appendChild(img);
-    });
-  }
+  const heroWidget = wireImageSetting("hero", "heroImage", "Save Hero Photo");
+  const visionWidget = wireImageSetting("vision", "visionImage", "Save Photo");
 
   veloraRequireAuth(async () => {
     const { doc, getDoc, setDoc, collection, addDoc, serverTimestamp } = window.veloraFirestoreMod;
@@ -103,56 +159,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = snap.data();
         if (emailInput) emailInput.value = data.email || "";
         if (phoneInput) phoneInput.value = data.phone || "";
-        if (heroCurrentPreview && data.heroImage) {
-          heroCurrentPreview.innerHTML = '<p class="hint">Current photo:</p><img src="' + data.heroImage + '" style="max-width:220px;border-radius:10px;margin-bottom:14px;">';
-        }
+        if (heroWidget && data.heroImage) heroWidget.showCurrent(data.heroImage);
+        if (visionWidget && data.visionImage) visionWidget.showCurrent(data.visionImage);
       }
     } catch (err) {
       console.error("Velora settings load error:", err);
-    }
-
-    if (heroSaveBtn) {
-      heroSaveBtn.addEventListener("click", async () => {
-        const file = heroFile.files[0];
-        if (!file) {
-          setShowMsg("hero-msg", "error", "Please choose a photo first.");
-          return;
-        }
-        heroSaveBtn.disabled = true;
-        heroSaveBtn.textContent = "Saving...";
-        try {
-          const { dataUrl } = await compressImageToDataUrl(file, 900000);
-          await setDoc(doc(window.veloraDb, "settings", "site"), { heroImage: dataUrl }, { merge: true });
-          setShowMsg("hero-msg", "success", "Hero photo updated! Check your homepage.");
-          heroCurrentPreview.innerHTML = '<p class="hint">Current photo:</p><img src="' + dataUrl + '" style="max-width:220px;border-radius:10px;margin-bottom:14px;">';
-          heroFile.value = "";
-          heroPreview.innerHTML = "";
-        } catch (err) {
-          console.error("Velora hero photo save error:", err);
-          if (err && err.message === "IMAGE_TOO_LARGE") {
-            setShowMsg("hero-msg", "error", "This photo is too large even after compression — try a smaller image.");
-          } else {
-            setShowMsg("hero-msg", "error", "Something went wrong. Please try again.");
-          }
-        } finally {
-          heroSaveBtn.disabled = false;
-          heroSaveBtn.textContent = "Save Hero Photo";
-        }
-      });
-    }
-
-    if (heroRemoveBtn) {
-      heroRemoveBtn.addEventListener("click", async () => {
-        if (!window.confirm("Remove the hero photo and go back to the default design?")) return;
-        try {
-          await setDoc(doc(window.veloraDb, "settings", "site"), { heroImage: "" }, { merge: true });
-          heroCurrentPreview.innerHTML = "";
-          setShowMsg("hero-msg", "success", "Hero photo removed.");
-        } catch (err) {
-          console.error("Velora hero photo remove error:", err);
-          setShowMsg("hero-msg", "error", "Something went wrong. Please try again.");
-        }
-      });
     }
 
     if (!section) return;

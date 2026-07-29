@@ -33,6 +33,11 @@ async function veloraLoadPublicContent(){
         heroEl.classList.add("has-photo");
         heroEl.style.backgroundImage = "url('" + data.heroImage + "')";
       }
+      const visionEl = document.getElementById("vision-panel");
+      if (visionEl && data.visionImage) {
+        visionEl.classList.add("has-photo");
+        visionEl.style.backgroundImage = "url('" + data.visionImage + "')";
+      }
     }
   } catch (err) {
     console.error("Velora public content: settings fetch failed", err);
