@@ -1,0 +1,457 @@
+/* =========================================================
+   Velora — i18n dictionary & language toggle
+   Add/edit Arabic or English text here — it updates every page.
+   ========================================================= */
+
+const VELORA_I18N = {
+  en: {
+    "brand.name": "Velora",
+
+    "nav.home": "Home",
+    "nav.about": "About",
+    "nav.portfolio": "Portfolio",
+    "nav.services": "Services",
+    "nav.booking": "Book a Session",
+    "nav.contact": "Contact",
+
+    "common.bookBtn": "Book a Session",
+    "common.viewPortfolio": "View Portfolio",
+    "common.readMore": "Learn More",
+    "common.submit": "Submit",
+
+    "footer.tagline": "Capture the moment with love.",
+    "footer.quicklinks": "Quick Links",
+    "footer.getintouch": "Get in Touch",
+    "footer.followus": "Follow along",
+    "footer.rights": "All rights reserved.",
+    "footer.founder": "Founded by Ronadisa Al-Sayed",
+    "footer.admin": "Admin",
+
+    "home.heroSlogan1": "Capture the moment with love",
+    "home.heroSlogan2": "Your window to the world with a different vision.",
+    "home.heroCta1": "Book a Session",
+    "home.heroCta2": "View Portfolio",
+
+    "home.introEyebrow": "Our Vision",
+    "home.introTitle": "Artistic Soulfulness",
+    "home.introText": "Velora is an Egyptian-based media house production founded by Ronadisa Al-Sayed. We provide professional photography and online freelance services, operating on a unique artistic and ethical vision — soulful captures rooted in a modern, trend-led, and expressively bold aesthetic.",
+    "home.introLink": "More about our vision",
+
+    "home.portfolioEyebrow": "Selected Work",
+    "home.portfolioTitle": "A Glimpse Into Our Work",
+    "home.portfolioSubtitle": "A preview of the moods and moments we love to capture.",
+    "home.portfolioBtn": "View Full Portfolio",
+
+    "home.servicesEyebrow": "What We Offer",
+    "home.servicesTitle": "Professional Photography",
+    "home.servicesText": "Expert photography services providing a unique visual perspective, specializing in artistic portraits and street photography — with a focus on client satisfaction from first message to final delivery.",
+    "home.servicesBtn": "Explore Services",
+
+    "home.valuesEyebrow": "What Guides Us",
+    "home.valuesTitle": "Our Core Values",
+
+    "home.ctaTitle": "Ready to Capture Your Story?",
+    "home.ctaText": "Whether you're booking a session today or simply want to stay connected for future moments, we'd love to hear from you.",
+    "home.ctaBtn": "Book Your Session",
+
+    "values.integrity.title": "Religious Integrity",
+    "values.integrity.text": "Every session honors our commitment to photographing women only with hijab, staying true to our ethical foundation.",
+    "values.soulful.title": "Artistic Soulfulness",
+    "values.soulful.text": "A modern, trend-led, expressively bold aesthetic — imagery with genuine feeling behind the lens.",
+    "values.satisfaction.title": "Customer Satisfaction",
+    "values.satisfaction.text": "From the first inquiry to the final gallery, your comfort and happiness guide every decision we make.",
+    "values.growth.title": "Continuous Self-Development",
+    "values.growth.text": "We keep learning, practicing, and refining our craft to bring you fresh, elevated work every time.",
+
+    "about.eyebrow": "About Us",
+    "about.heroTitle": "About Velora",
+    "about.heroSubtitle": "Founded by Ronadisa Al-Sayed",
+    "about.visionEyebrow": "Our Vision",
+    "about.visionTitle": "Artistic Soulfulness",
+    "about.visionP1": "Velora is an Egyptian-based media house production founded by Ronadisa Al-Sayed. We provide professional photography and online freelance services, operating on a unique artistic and ethical vision.",
+    "about.visionP2": "Velora positions itself as a mission-driven photography house that caters to a selective audience seeking artistic imagery that aligns with specific religious and ethical values.",
+    "about.visionP3": "We specialize in soulful captures while adhering strictly to the principle of photographing women only with headscarves (hijab). Our aesthetic is modern, trend-led, and expressively bold.",
+    "about.visionP4": "Every frame we create is guided by intention — a balance between artistic freedom and the values we hold close.",
+    "about.valuesEyebrow": "Our Foundation",
+    "about.valuesTitle": "Core Values",
+    "about.ctaTitle": "Let's Create Something Beautiful",
+    "about.ctaText": "Get in touch to book a session, or simply say hello so we can stay in touch.",
+    "about.ctaBtn": "Book a Session",
+
+    "services.eyebrow": "Services",
+    "services.heroTitle": "Our Services",
+    "services.heroSubtitle": "Thoughtful, artistic photography — crafted around you.",
+    "services.mainEyebrow": "Signature Service",
+    "services.mainTitle": "Professional Photography",
+    "services.mainText": "Expert photography services providing a unique visual perspective, specializing in artistic portraits and street photography with a focus on client satisfaction.",
+    "services.focus1Title": "Artistic Portraits",
+    "services.focus1Text": "Soulful, editorial-style portraits that reflect your personality with a modern, bold aesthetic — always in line with our values.",
+    "services.focus2Title": "Street Photography",
+    "services.focus2Text": "Candid, story-driven street sessions that capture genuine moments with a fresh, trend-led visual voice.",
+    "services.processEyebrow": "The Journey",
+    "services.processTitle": "How It Works",
+    "services.step1Title": "Reach Out",
+    "services.step1Text": "Fill in the booking form and tell us a little about the session you're dreaming of.",
+    "services.step2Title": "Consultation",
+    "services.step2Text": "We'll connect to discuss vision, location, styling and timing.",
+    "services.step3Title": "The Session",
+    "services.step3Text": "We create a comfortable space to capture soulful, authentic imagery.",
+    "services.step4Title": "Delivery",
+    "services.step4Text": "Your favorite moments, beautifully edited and delivered to you.",
+    "services.ctaTitle": "Ready When You Are",
+    "services.ctaBtn": "Book a Session",
+
+    "portfolio.eyebrow": "Our Work",
+    "portfolio.heroTitle": "Portfolio",
+    "portfolio.heroSubtitle": "A curated look at the moods, light and stories we love to capture. Full galleries coming soon — follow along for the latest.",
+    "portfolio.filterAll": "All",
+    "portfolio.filterPortraits": "Portraits",
+    "portfolio.filterStreet": "Street",
+    "portfolio.filterEditorial": "Editorial",
+    "portfolio.tile1": "Artistic Portraits",
+    "portfolio.tile2": "Street Photography",
+    "portfolio.tile3": "Golden Hour",
+    "portfolio.tile4": "Editorial Looks",
+    "portfolio.tile5": "Studio Sessions",
+    "portfolio.tile6": "Outdoor Stories",
+    "portfolio.note": "New work is added regularly — follow @velora on Instagram for the latest sessions.",
+    "portfolio.ctaTitle": "Love What You See?",
+    "portfolio.ctaBtn": "Book Your Session",
+
+    "contact.eyebrow": "Contact",
+    "contact.heroTitle": "Get in Touch",
+    "contact.heroSubtitle": "Have a question, or just want to say hello? We'd love to hear from you.",
+    "contact.emailTitle": "Email",
+    "contact.emailValue": "hello@velora-studio.com",
+    "contact.phoneTitle": "Phone / WhatsApp",
+    "contact.phoneValue": "+20 100 000 0000",
+    "contact.socialTitle": "Social",
+    "contact.formNoteTitle": "Prefer to fill a form?",
+    "contact.formNoteText": "Whether you'd like to book a session or simply stay in touch for future moments (including a little birthday surprise from us), fill out our short form.",
+    "contact.formBtn": "Say Hello",
+
+    "booking.eyebrow": "Book a Session",
+    "booking.heroTitle": "Let's Stay Connected",
+    "booking.heroSubtitle": "Book a photography session, or simply leave your details to stay in touch — we love reaching out on birthdays and special occasions, even if we haven't worked together yet.",
+    "booking.noteTitle": "Why we ask for these details",
+    "booking.noteText": "Even if you're not booking today, joining our circle means we'll remember your birthday and reach out on Islamic occasions to keep in touch. Your information is kept private and never shared.",
+    "booking.labelPurpose": "I'm reaching out to...",
+    "booking.optionBook": "Book a photography session",
+    "booking.optionContact": "Just stay in touch",
+    "booking.labelName": "Full Name",
+    "booking.phName": "e.g. Sara Ahmed",
+    "booking.labelDob": "Date of Birth",
+    "booking.labelGovernorate": "Governorate",
+    "booking.phGovernorate": "Select your governorate",
+    "booking.labelCity": "City / Markaz",
+    "booking.phCity": "e.g. Nasr City",
+    "booking.labelPhone": "Phone Number",
+    "booking.phPhone": "01xxxxxxxxx",
+    "booking.labelEmail": "Email Address",
+    "booking.phEmail": "you@example.com",
+    "booking.labelSessionType": "Preferred Session Type",
+    "booking.phSessionType": "Select a type",
+    "booking.optPortrait": "Artistic Portraits",
+    "booking.optStreet": "Street Photography",
+    "booking.optOther": "Not sure yet",
+    "booking.labelPreferredDate": "Preferred Date",
+    "booking.labelMessage": "Message",
+    "booking.phMessage": "Tell us anything else we should know...",
+    "booking.consentText": "I agree to be contacted by Velora via phone, email or WhatsApp regarding bookings and occasional greetings.",
+    "booking.submitBtn": "Send",
+    "booking.submitting": "Sending...",
+    "booking.successMsg": "Thank you! Your details have been received. We'll be in touch soon — and we won't forget your special days. 💛",
+    "booking.errorMsg": "Something went wrong. Please check your connection and try again.",
+    "booking.missingFieldsMsg": "Please fill in all required fields before sending.",
+    "booking.invalidPhoneMsg": "Please enter a valid Egyptian phone number (e.g. 01xxxxxxxxx).",
+    "booking.consentRequired": "Please agree before submitting.",
+    "booking.setupWarning": "Booking form isn't fully connected yet. Please complete the Firebase setup in the README.",
+
+    "login.eyebrow": "Admin",
+    "login.title": "Studio Login",
+    "login.subtitle": "For Velora's team only.",
+    "login.labelEmail": "Email",
+    "login.labelPassword": "Password",
+    "login.submitBtn": "Log In",
+    "login.submitting": "Logging in...",
+    "login.error": "Incorrect email or password.",
+    "login.back": "Back to homepage",
+
+    "admin.title": "Studio Dashboard",
+    "admin.welcome": "Welcome back",
+    "admin.logout": "Log Out",
+    "admin.statTotal": "Total Contacts",
+    "admin.statBookings": "Booking Requests",
+    "admin.statContacts": "Stay-in-Touch",
+    "admin.statUpcoming": "Birthdays in 30 Days",
+    "admin.upcomingTitle": "Upcoming Birthdays",
+    "admin.upcomingEmpty": "No birthdays in the next 30 days.",
+    "admin.tableTitle": "All Registrations",
+    "admin.searchPh": "Search by name, phone, email...",
+    "admin.exportBtn": "Export CSV",
+    "admin.colName": "Name",
+    "admin.colBirthdate": "Birthdate",
+    "admin.colGovernorate": "Governorate",
+    "admin.colCity": "City",
+    "admin.colPhone": "Phone",
+    "admin.colEmail": "Email",
+    "admin.colPurpose": "Purpose",
+    "admin.colMessage": "Message",
+    "admin.colSubmitted": "Submitted",
+    "admin.colActions": "Actions",
+    "admin.deleteBtn": "Delete",
+    "admin.deleteConfirm": "Delete this entry permanently? This can't be undone.",
+    "admin.deleteError": "Couldn't delete this entry. Please try again.",
+    "admin.empty": "No registrations yet.",
+    "admin.loading": "Loading your contacts...",
+    "admin.daysLeft": "in {n} days"
+  },
+
+  ar: {
+    "brand.name": "فيلورا",
+
+    "nav.home": "الرئيسية",
+    "nav.about": "عن فيلورا",
+    "nav.portfolio": "معرض الأعمال",
+    "nav.services": "الخدمات",
+    "nav.booking": "احجزي ميعاد",
+    "nav.contact": "تواصل معنا",
+
+    "common.bookBtn": "احجزي ميعاد",
+    "common.viewPortfolio": "شاهدي المعرض",
+    "common.readMore": "اعرفي أكثر",
+    "common.submit": "إرسال",
+
+    "footer.tagline": "التقطي اللحظة بحب.",
+    "footer.quicklinks": "روابط سريعة",
+    "footer.getintouch": "تواصلي معنا",
+    "footer.followus": "تابعينا",
+    "footer.rights": "جميع الحقوق محفوظة.",
+    "footer.founder": "تأسست على يد روناديسا السيد",
+    "footer.admin": "لوحة التحكم",
+
+    "home.heroSlogan1": "التقطي اللحظة بحب",
+    "home.heroSlogan2": "نافذتك على العالم برؤية مختلفة.",
+    "home.heroCta1": "احجزي ميعاد",
+    "home.heroCta2": "شاهدي المعرض",
+
+    "home.introEyebrow": "رؤيتنا",
+    "home.introTitle": "روح فنية صادقة",
+    "home.introText": "فيلورا هي بيت إعلامي مصري أسسته روناديسا السيد، نقدم خدمات تصوير فوتوغرافي محترفة وخدمات فريلانس أونلاين، وننطلق من رؤية فنية وأخلاقية مميزة — لقطات نابعة من الروح، بطابع عصري وجريء.",
+    "home.introLink": "اعرفي أكثر عن رؤيتنا",
+
+    "home.portfolioEyebrow": "أعمال مختارة",
+    "home.portfolioTitle": "لمحة من أعمالنا",
+    "home.portfolioSubtitle": "معاينة للحالات واللحظات التي نحب تصويرها.",
+    "home.portfolioBtn": "شاهدي المعرض بالكامل",
+
+    "home.servicesEyebrow": "ماذا نقدم",
+    "home.servicesTitle": "تصوير فوتوغرافي محترف",
+    "home.servicesText": "خدمات تصوير محترفة برؤية بصرية مميزة، متخصصون في البورتريه الفني والتصوير الفوتوغرافي في الشارع، مع تركيز كامل على رضا العميلة من أول رسالة وحتى استلام الصور.",
+    "home.servicesBtn": "استكشفي الخدمات",
+
+    "home.valuesEyebrow": "ما يوجهنا",
+    "home.valuesTitle": "قيمنا الأساسية",
+
+    "home.ctaTitle": "جاهزة نلتقط قصتك؟",
+    "home.ctaText": "سواء كنتِ تحجزين جلسة تصوير اليوم، أو تريدين فقط أن تبقَي على تواصل معنا للحظات القادمة، يسعدنا التواصل معك.",
+    "home.ctaBtn": "احجزي جلستك",
+
+    "values.integrity.title": "النزاهة الدينية",
+    "values.integrity.text": "كل جلسة تصوير تحترم مبدأنا في تصوير السيدات بالحجاب فقط، التزامًا بأساسنا الأخلاقي.",
+    "values.soulful.title": "روح فنية صادقة",
+    "values.soulful.text": "طابع عصري وجريء ومتماشٍ مع أحدث الاتجاهات — صور نابعة من إحساس حقيقي خلف العدسة.",
+    "values.satisfaction.title": "رضا العميلة",
+    "values.satisfaction.text": "من أول استفسار وحتى استلام الألبوم النهائي، راحتك وسعادتك هما ما يوجه كل قرار نتخذه.",
+    "values.growth.title": "التطوير المستمر للذات",
+    "values.growth.text": "نستمر في التعلم والتدريب وتطوير مهاراتنا لنقدم لك أعمالًا جديدة ومتميزة في كل مرة.",
+
+    "about.eyebrow": "من نحن",
+    "about.heroTitle": "عن فيلورا",
+    "about.heroSubtitle": "تأسست على يد روناديسا السيد",
+    "about.visionEyebrow": "رؤيتنا",
+    "about.visionTitle": "روح فنية صادقة",
+    "about.visionP1": "فيلورا هي بيت إعلامي مصري أسسته روناديسا السيد. نقدم خدمات تصوير فوتوغرافي محترفة وخدمات فريلانس أونلاين، منطلقين من رؤية فنية وأخلاقية فريدة.",
+    "about.visionP2": "تقدم فيلورا نفسها كبيت تصوير له رسالة واضحة، يستهدف جمهورًا مختارًا يبحث عن صور فنية تتماشى مع قيم دينية وأخلاقية محددة.",
+    "about.visionP3": "نحن متخصصون في اللقطات الصادقة والنابعة من الروح، مع الالتزام الصارم بمبدأ تصوير السيدات بالحجاب فقط. طابعنا الفني عصري، يتماشى مع أحدث الاتجاهات، وجريء في تعبيره.",
+    "about.visionP4": "كل لقطة نصنعها تنبع من نية واضحة — توازن بين الحرية الفنية والقيم التي نتمسك بها.",
+    "about.valuesEyebrow": "أساسنا",
+    "about.valuesTitle": "قيمنا الأساسية",
+    "about.ctaTitle": "لنصنع معًا شيئًا جميلًا",
+    "about.ctaText": "تواصلي معنا لحجز جلسة تصوير، أو فقط للتعارف والبقاء على تواصل.",
+    "about.ctaBtn": "احجزي ميعاد",
+
+    "services.eyebrow": "خدماتنا",
+    "services.heroTitle": "خدماتنا",
+    "services.heroSubtitle": "تصوير فني مدروس... مصمم خصيصًا لكِ.",
+    "services.mainEyebrow": "خدمتنا الأساسية",
+    "services.mainTitle": "تصوير فوتوغرافي محترف",
+    "services.mainText": "خدمات تصوير محترفة تقدم رؤية بصرية مميزة، متخصصون في البورتريه الفني والتصوير الفوتوغرافي في الشارع، مع تركيز كامل على رضا العميلة.",
+    "services.focus1Title": "بورتريه فني",
+    "services.focus1Text": "صور بورتريه صادقة بطابع تحريري، تعكس شخصيتك بأسلوب عصري وجريء، ودائمًا في إطار قيمنا.",
+    "services.focus2Title": "تصوير الشارع",
+    "services.focus2Text": "جلسات تصوير عفوية في الشارع تحكي قصة حقيقية، بلمسة بصرية عصرية ومتجددة.",
+    "services.processEyebrow": "خطوات العمل",
+    "services.processTitle": "كيف نعمل",
+    "services.step1Title": "تواصلي معنا",
+    "services.step1Text": "املأي استمارة الحجز وأخبرينا قليلًا عن الجلسة التي تحلمين بها.",
+    "services.step2Title": "استشارة أولية",
+    "services.step2Text": "نتواصل معك لمناقشة الرؤية والمكان والاستايل والتوقيت.",
+    "services.step3Title": "جلسة التصوير",
+    "services.step3Text": "نخلق مساحة مريحة لتصوير لقطات صادقة ونابعة من الروح.",
+    "services.step4Title": "التسليم",
+    "services.step4Text": "أجمل لحظاتك، بعد تعديل احترافي، تصل إليكِ جاهزة.",
+    "services.ctaTitle": "جاهزون في أي وقت يناسبك",
+    "services.ctaBtn": "احجزي ميعاد",
+
+    "portfolio.eyebrow": "أعمالنا",
+    "portfolio.heroTitle": "معرض الأعمال",
+    "portfolio.heroSubtitle": "نظرة مختارة على الحالات والإضاءة والقصص التي نحب تصويرها. المعرض الكامل قريبًا — تابعينا لمشاهدة آخر الأعمال.",
+    "portfolio.filterAll": "الكل",
+    "portfolio.filterPortraits": "بورتريه",
+    "portfolio.filterStreet": "تصوير الشارع",
+    "portfolio.filterEditorial": "تحريري",
+    "portfolio.tile1": "بورتريه فني",
+    "portfolio.tile2": "تصوير الشارع",
+    "portfolio.tile3": "ساعة الذهب",
+    "portfolio.tile4": "لوك تحريري",
+    "portfolio.tile5": "جلسات استوديو",
+    "portfolio.tile6": "قصص خارجية",
+    "portfolio.note": "نضيف أعمالًا جديدة بانتظام — تابعي @velora على إنستجرام لمشاهدة آخر الجلسات.",
+    "portfolio.ctaTitle": "أحببتِ ما رأيتِ؟",
+    "portfolio.ctaBtn": "احجزي جلستك",
+
+    "contact.eyebrow": "تواصل معنا",
+    "contact.heroTitle": "تواصلي معنا",
+    "contact.heroSubtitle": "عندك سؤال، أو حابة تسلمي فقط؟ يسعدنا التواصل معك.",
+    "contact.emailTitle": "البريد الإلكتروني",
+    "contact.emailValue": "hello@velora-studio.com",
+    "contact.phoneTitle": "تليفون / واتساب",
+    "contact.phoneValue": "+20 100 000 0000",
+    "contact.socialTitle": "السوشيال ميديا",
+    "contact.formNoteTitle": "تفضلين تعبئة استمارة؟",
+    "contact.formNoteText": "سواء كنتِ تريدين حجز جلسة تصوير أو فقط البقاء على تواصل للحظات القادمة (وحتى مفاجأة صغيرة بعيد ميلادك)، املأي استمارتنا القصيرة.",
+    "contact.formBtn": "تواصلي معنا",
+
+    "booking.eyebrow": "احجزي ميعاد",
+    "booking.heroTitle": "لنبقَ على تواصل",
+    "booking.heroSubtitle": "احجزي جلسة تصوير، أو فقط اتركي بياناتك للبقاء على تواصل — نحب التواصل في أعياد الميلاد والمناسبات الإسلامية، حتى لو لم نعمل معًا بعد.",
+    "booking.noteTitle": "لماذا نطلب هذه البيانات",
+    "booking.noteText": "حتى لو لم تحجزي معنا اليوم، انضمامك لدائرتنا يعني أننا سنتذكر عيد ميلادك ونتواصل معك في المناسبات الإسلامية. بياناتك محفوظة بخصوصية ولن تُشارك مع أي طرف آخر.",
+    "booking.labelPurpose": "أنا أتواصل من أجل...",
+    "booking.optionBook": "حجز جلسة تصوير",
+    "booking.optionContact": "البقاء على تواصل فقط",
+    "booking.labelName": "الاسم بالكامل",
+    "booking.phName": "مثال: سارة أحمد",
+    "booking.labelDob": "تاريخ الميلاد",
+    "booking.labelGovernorate": "المحافظة",
+    "booking.phGovernorate": "اختاري محافظتك",
+    "booking.labelCity": "المركز أو المدينة",
+    "booking.phCity": "مثال: مدينة نصر",
+    "booking.labelPhone": "رقم التليفون",
+    "booking.phPhone": "01xxxxxxxxx",
+    "booking.labelEmail": "البريد الإلكتروني",
+    "booking.phEmail": "you@example.com",
+    "booking.labelSessionType": "نوع الجلسة المفضل",
+    "booking.phSessionType": "اختاري نوعًا",
+    "booking.optPortrait": "بورتريه فني",
+    "booking.optStreet": "تصوير الشارع",
+    "booking.optOther": "لم أقرر بعد",
+    "booking.labelPreferredDate": "التاريخ المفضل",
+    "booking.labelMessage": "رسالة",
+    "booking.phMessage": "أخبرينا بأي شيء آخر تريدين إخبارنا به...",
+    "booking.consentText": "أوافق على أن تتواصل فيلورا معي عبر التليفون أو البريد الإلكتروني أو واتساب بخصوص الحجوزات والتهاني في المناسبات.",
+    "booking.submitBtn": "إرسال",
+    "booking.submitting": "جارٍ الإرسال...",
+    "booking.successMsg": "شكرًا لكِ! تم استلام بياناتك. سنتواصل معك قريبًا — ولن ننسى أيامك المميزة. 💛",
+    "booking.errorMsg": "حدث خطأ ما. تحققي من الاتصال بالإنترنت وحاولي مرة أخرى.",
+    "booking.missingFieldsMsg": "من فضلك املأي كل الحقول المطلوبة قبل الإرسال.",
+    "booking.invalidPhoneMsg": "من فضلك أدخلي رقم تليفون مصري صحيح (مثال: 01xxxxxxxxx).",
+    "booking.consentRequired": "يرجى الموافقة قبل الإرسال.",
+    "booking.setupWarning": "استمارة الحجز غير متصلة بالكامل بعد. من فضلك أكملي إعداد Firebase الموجود في ملف README.",
+
+    "login.eyebrow": "لوحة التحكم",
+    "login.title": "تسجيل دخول الاستوديو",
+    "login.subtitle": "خاص بفريق فيلورا فقط.",
+    "login.labelEmail": "البريد الإلكتروني",
+    "login.labelPassword": "كلمة المرور",
+    "login.submitBtn": "تسجيل الدخول",
+    "login.submitting": "جارٍ تسجيل الدخول...",
+    "login.error": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    "login.back": "العودة للصفحة الرئيسية",
+
+    "admin.title": "لوحة تحكم الاستوديو",
+    "admin.welcome": "أهلًا بعودتك",
+    "admin.logout": "تسجيل الخروج",
+    "admin.statTotal": "إجمالي المسجلين",
+    "admin.statBookings": "طلبات حجز",
+    "admin.statContacts": "بقاء على تواصل",
+    "admin.statUpcoming": "أعياد ميلاد خلال 30 يوم",
+    "admin.upcomingTitle": "أعياد ميلاد قادمة",
+    "admin.upcomingEmpty": "لا توجد أعياد ميلاد خلال الثلاثين يومًا القادمة.",
+    "admin.tableTitle": "جميع التسجيلات",
+    "admin.searchPh": "بحث بالاسم أو التليفون أو الإيميل...",
+    "admin.exportBtn": "تصدير CSV",
+    "admin.colName": "الاسم",
+    "admin.colBirthdate": "تاريخ الميلاد",
+    "admin.colGovernorate": "المحافظة",
+    "admin.colCity": "المدينة",
+    "admin.colPhone": "التليفون",
+    "admin.colEmail": "الإيميل",
+    "admin.colPurpose": "الغرض",
+    "admin.colMessage": "الرسالة",
+    "admin.colSubmitted": "تاريخ التسجيل",
+    "admin.colActions": "إجراءات",
+    "admin.deleteBtn": "حذف",
+    "admin.deleteConfirm": "هل تريدين حذف هذا الطلب نهائيًا؟ لا يمكن التراجع عن هذا الإجراء.",
+    "admin.deleteError": "تعذّر حذف هذا الطلب. من فضلك حاولي مرة أخرى.",
+    "admin.empty": "لا توجد تسجيلات حتى الآن.",
+    "admin.loading": "جاري تحميل بياناتك...",
+    "admin.daysLeft": "خلال {n} يوم"
+  }
+};
+
+const VELORA_LANG_KEY = "velora_lang";
+
+function veloraGetLang(){
+  return localStorage.getItem(VELORA_LANG_KEY) || "en";
+}
+
+function veloraApplyLang(lang){
+  const dict = VELORA_I18N[lang] || VELORA_I18N.en;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const key = el.getAttribute("data-i18n-ph");
+    if (dict[key] !== undefined) el.setAttribute("placeholder", dict[key]);
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const key = el.getAttribute("data-i18n-html");
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+
+  document.querySelectorAll(".lang-toggle").forEach(btn => {
+    btn.textContent = lang === "ar" ? "EN" : "AR";
+  });
+
+  localStorage.setItem(VELORA_LANG_KEY, lang);
+}
+
+function veloraT(key){
+  const dict = VELORA_I18N[veloraGetLang()] || VELORA_I18N.en;
+  return dict[key] || (VELORA_I18N.en[key] || key);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  veloraApplyLang(veloraGetLang());
+  document.querySelectorAll(".lang-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      veloraApplyLang(veloraGetLang() === "ar" ? "en" : "ar");
+    });
+  });
+});
