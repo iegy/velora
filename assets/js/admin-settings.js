@@ -65,8 +65,14 @@ async function loadSocialList(){
 }
 
 /* Reusable wiring for a single "site image" setting (hero photo, vision
-   photo, ...): live preview on file choice, compress+save, remove. */
-function wireImageSetting(idPrefix, fieldKey, saveLabel){
+   photo, ...): live preview on file choice, compress+save, remove.
+   maxBytes is kept modest (well under Firestore's 1MB per-document
+   limit) because heroImage AND visionImage live in the SAME document
+   (settings/site) — if either one were allowed to grow too close to
+   900KB, saving the second image could silently fail once both are
+   combined in that one document. */
+function wireImageSetting(idPrefix, fieldKey, saveLabel, maxBytes){
+  maxBytes = maxBytes || 400000;
   const fileInput = document.getElementById(idPrefix + "-file");
   const preview = document.getElementById(idPrefix + "-preview");
   const currentPreview = document.getElementById(idPrefix + "-current-preview");
@@ -99,8 +105,20 @@ function wireImageSetting(idPrefix, fieldKey, saveLabel){
     saveBtn.disabled = true;
     saveBtn.textContent = "Saving...";
     try {
+      // The Firebase connection loads in the background right after the
+      // page opens. If someone picks a photo and hits Save within that
+      // first second or two, window.veloraDb might not exist yet — wait
+      // briefly for it instead of failing immediately.
+      let waited = 0;
+      while ((!window.veloraDb || !window.veloraFirestoreMod) && waited < 8000) {
+        await new Promise(r => setTimeout(r, 200));
+        waited += 200;
+      }
+      if (!window.veloraDb || !window.veloraFirestoreMod) {
+        throw new Error("NOT_CONNECTED");
+      }
       const { doc, setDoc } = window.veloraFirestoreMod;
-      const { dataUrl } = await compressImageToDataUrl(file, 900000);
+      const { dataUrl } = await compressImageToDataUrl(file, maxBytes);
       await setDoc(doc(window.veloraDb, "settings", "site"), { [fieldKey]: dataUrl }, { merge: true });
       setShowMsg(msgId, "success", "Photo updated! Check your site.");
       showCurrent(dataUrl);
@@ -108,11 +126,16 @@ function wireImageSetting(idPrefix, fieldKey, saveLabel){
       preview.innerHTML = "";
     } catch (err) {
       console.error("Velora image setting save error:", err);
+      let msg = "Something went wrong. Please try again.";
       if (err && err.message === "IMAGE_TOO_LARGE") {
-        setShowMsg(msgId, "error", "This photo is too large even after compression — try a smaller image.");
-      } else {
-        setShowMsg(msgId, "error", "Something went wrong. Please try again.");
+        msg = "This photo is too large even after compression — try a smaller image.";
+      } else if (err && err.message === "NOT_CONNECTED") {
+        msg = "Still connecting to the server. Please wait a few seconds and press Save again.";
       }
+      setShowMsg(msgId, "error", msg);
+      // Also alert() so the failure can never go unnoticed even if the
+      // inline message is scrolled out of view.
+      alert(msg);
     } finally {
       saveBtn.disabled = false;
       saveBtn.textContent = saveLabel;
