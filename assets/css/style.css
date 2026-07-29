@@ -139,8 +139,12 @@ html[lang="ar"] .brand .wordmark{ font-family: var(--font-ar); }
   position: relative; padding: 6px 0;
   transition: var(--transition);
 }
-.nav-links a:hover, .nav-links a.active{ color: var(--c-orange); }
-.nav-links a.active::after{
+.nav-links a:not(.btn):hover, .nav-links a.active:not(.btn){ color: var(--c-orange); }
+/* The "Book a Session" nav item is a solid-color pill (.btn-primary), so it
+   always keeps white text for contrast — never the same brown/orange used
+   for plain text links, and never a color matching its own background. */
+.nav-links a.btn{ color: #fff; }
+.nav-links a.active:not(.btn)::after{
   content:''; position:absolute; bottom:-2px; left:0; right:0; height:2px;
   background: var(--c-orange); border-radius: 2px;
 }
@@ -334,7 +338,14 @@ html[lang="ar"] .gallery-tile .tile-label{ font-family: var(--font-ar); }
   background: var(--c-bg-alt); border-radius: var(--radius-sm); padding: 16px 18px;
   font-size: 0.88rem; margin-bottom: 26px; color: var(--c-text);
 }
-.hp-field{ position:absolute; left:-9999px; opacity:0; height:0; }
+/* Visually-hidden honeypot field. Uses the clip/1px pattern instead of a
+   large negative "left" offset — a huge left:-9999px badly overflows the
+   page's horizontal scroll area on RTL (Arabic) pages, which can push all
+   real content off-screen and make the whole page look blank. */
+.hp-field{
+  position:absolute; width:1px; height:1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; padding:0; margin:-1px; border:0; opacity:0;
+}
 
 .form-msg{ padding: 14px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; margin-top: 18px; display:none; }
 .form-msg.show{ display:block; }
@@ -388,6 +399,16 @@ html[lang="ar"] .gallery-tile .tile-label{ font-family: var(--font-ar); }
 .table-wrap{ overflow-x:auto; background:#fff; border-radius: var(--radius); border: 1px solid var(--c-border); }
 table{ width:100%; border-collapse: collapse; font-size: 0.88rem; min-width: 900px; }
 th, td{ padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--c-border); white-space: nowrap; }
+/* Table columns auto-size to content, so the max-width has to live on an
+   inner inline-block span — a max-width on the <td> itself is ignored by
+   the browser's table layout and the column just grows to fit the text. */
+.msg-cell{ cursor: help; }
+.msg-cell .msg-inner{
+  display: inline-block; vertical-align: middle;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 220px;
+}
+.msg-cell.msg-empty{ color: var(--c-text-soft); cursor: default; }
 html[dir="rtl"] th, html[dir="rtl"] td{ text-align: right; }
 th{ background: var(--c-bg-alt); cursor:pointer; font-weight:700; user-select:none; }
 tr:hover td{ background: #faf9f6; }

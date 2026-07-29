@@ -81,12 +81,16 @@ function renderTable(rows){
   const lang = veloraGetLang();
   const tbody = document.getElementById("table-body");
   if (!rows.length) {
-    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">' + veloraT("admin.empty") + '</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" class="empty-state">' + veloraT("admin.empty") + '</td></tr>';
     return;
   }
   tbody.innerHTML = rows.map(r => {
     const badgeClass = r.purpose === "book" ? "book" : "contact";
     const purposeLabel = r.purpose === "book" ? veloraT("booking.optionBook") : veloraT("booking.optionContact");
+    const msg = (r.message || "").trim();
+    const msgCell = msg
+      ? '<td class="msg-cell" title="' + escapeHtml(msg) + '"><span class="msg-inner">' + escapeHtml(msg) + "</span></td>"
+      : '<td class="msg-cell msg-empty">—</td>';
     return "<tr>" +
       "<td>" + escapeHtml(r.name) + "</td>" +
       "<td>" + escapeHtml(r.birthdate) + "</td>" +
@@ -95,6 +99,7 @@ function renderTable(rows){
       "<td>" + escapeHtml(r.phone) + "</td>" +
       "<td>" + escapeHtml(r.email) + "</td>" +
       '<td><span class="badge ' + badgeClass + '">' + purposeLabel + "</span></td>" +
+      msgCell +
       "<td>" + fmtDate(r.createdAtDate) + "</td>" +
       "</tr>";
   }).join("");

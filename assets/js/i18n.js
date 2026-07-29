@@ -5,6 +5,8 @@
 
 const VELORA_I18N = {
   en: {
+    "brand.name": "Velora",
+
     "nav.home": "Home",
     "nav.about": "About",
     "nav.portfolio": "Portfolio",
@@ -192,6 +194,7 @@ const VELORA_I18N = {
     "admin.colPhone": "Phone",
     "admin.colEmail": "Email",
     "admin.colPurpose": "Purpose",
+    "admin.colMessage": "Message",
     "admin.colSubmitted": "Submitted",
     "admin.empty": "No registrations yet.",
     "admin.loading": "Loading your contacts...",
@@ -199,6 +202,8 @@ const VELORA_I18N = {
   },
 
   ar: {
+    "brand.name": "فيلورا",
+
     "nav.home": "الرئيسية",
     "nav.about": "عن فيلورا",
     "nav.portfolio": "معرض الأعمال",
@@ -386,6 +391,7 @@ const VELORA_I18N = {
     "admin.colPhone": "التليفون",
     "admin.colEmail": "الإيميل",
     "admin.colPurpose": "الغرض",
+    "admin.colMessage": "الرسالة",
     "admin.colSubmitted": "تاريخ التسجيل",
     "admin.empty": "لا توجد تسجيلات حتى الآن.",
     "admin.loading": "جاري تحميل بياناتك...",
