@@ -77,6 +77,11 @@ button{ font-family: inherit; cursor: pointer; }
   margin-bottom: 10px;
 }
 html[lang="ar"] .eyebrow{ letter-spacing: 1px; }
+/* Alternating sections already use a tinted background for rhythm down
+   the page — tying the kicker color to that same alternation adds more
+   of the brand green without touching the primary (orange) action color
+   used on buttons and links. */
+.section-alt .eyebrow{ color: var(--c-green); }
 
 .section{ padding: 88px 0; }
 .section-sm{ padding: 56px 0; }
@@ -229,7 +234,7 @@ html[lang="ar"] .brand .wordmark{ font-family: var(--font-ar); }
 .card:hover{ transform: translateY(-4px); box-shadow: var(--shadow-card); }
 .card .icon{
   width: 52px; height:52px; border-radius: 50%;
-  background: var(--c-bg-alt); display:flex; align-items:center; justify-content:center;
+  background: rgba(175,187,156,0.28); display:flex; align-items:center; justify-content:center;
   margin-bottom: 18px; font-size: 1.4rem;
 }
 .card h3{ font-size: 1.15rem; margin-bottom: 8px; }
@@ -263,7 +268,7 @@ html[lang="ar"] .brand .wordmark{ font-family: var(--font-ar); }
   border: 1.5px solid var(--c-border); background: var(--c-white); color: var(--c-text-soft);
   padding: 9px 20px; border-radius: 999px; font-size: 0.88rem; font-weight:600; transition: var(--transition);
 }
-.filter-btn.active, .filter-btn:hover{ background: var(--c-text); color: #fff; border-color: var(--c-text); }
+.filter-btn.active, .filter-btn:hover{ background: var(--c-green); color: #fff; border-color: var(--c-green); }
 
 .gallery-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
 @media (max-width: 900px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
@@ -298,7 +303,7 @@ html[lang="ar"] .gallery-tile .tile-label{ font-family: var(--font-ar); }
 @media (max-width: 560px){ .steps{ grid-template-columns: 1fr; } }
 .step{ text-align:center; position:relative; }
 .step .num{
-  width: 46px; height:46px; border-radius:50%; background: var(--c-text); color:#fff;
+  width: 46px; height:46px; border-radius:50%; background: var(--c-green); color:#fff;
   display:flex; align-items:center; justify-content:center; font-weight:700; margin: 0 auto 16px;
 }
 
@@ -440,6 +445,43 @@ tr:hover td{ background: #faf9f6; }
 .tile-overlay{
   position:absolute; inset:0;
   background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.6) 100%);
+}
+
+/* ---------- Lightbox (full-size photo viewer) ---------- */
+.lightbox-overlay{
+  position: fixed; inset:0; z-index: 2000;
+  background: rgba(15,14,12,0.94);
+  display:none; align-items:center; justify-content:center;
+  padding: 60px 70px;
+}
+.lightbox-overlay.open{ display:flex; }
+.lightbox-figure{ margin:0; display:flex; flex-direction:column; align-items:center; max-width:100%; max-height:100%; }
+.lightbox-img{
+  max-width: 88vw; max-height: 80vh; object-fit: contain;
+  border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.03);
+}
+.lightbox-caption{ color:#f0ede6; text-align:center; margin-top:16px; font-size:0.95rem; max-width:70vw; }
+.lightbox-close{
+  position:absolute; top:18px; inset-inline-end:22px;
+  background:transparent; border:none; color:#fff; font-size:2.2rem; line-height:1;
+  cursor:pointer; opacity:0.85; transition: var(--transition);
+}
+.lightbox-close:hover{ opacity:1; transform: scale(1.08); }
+.lightbox-nav{
+  position:absolute; top:50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.35); color:#fff;
+  width:52px; height:52px; border-radius:50%; font-size:1.8rem; line-height:1;
+  cursor:pointer; transition: var(--transition); display:flex; align-items:center; justify-content:center;
+}
+.lightbox-nav:hover{ background: rgba(255,255,255,0.22); }
+.lightbox-prev{ left: 18px; }
+.lightbox-next{ right: 18px; }
+@media (max-width: 640px){
+  .lightbox-overlay{ padding: 90px 16px; }
+  .lightbox-nav{ width:42px; height:42px; font-size:1.4rem; }
+  .lightbox-prev{ left:8px; }
+  .lightbox-next{ right:8px; }
 }
 
 /* ---------- Admin sub-navigation ---------- */

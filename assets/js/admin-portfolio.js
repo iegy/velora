@@ -2,13 +2,10 @@
    Images are compressed in the browser and stored as a small base64
    string directly in Firestore — no paid Storage bucket needed. */
 
-function pfCategoryLabel(cat){
-  const map = {
-    portraits: veloraT("portfolio.filterPortraits"),
-    street: veloraT("portfolio.filterStreet"),
-    editorial: veloraT("portfolio.filterEditorial")
-  };
-  return map[cat] || cat;
+let pfCategories = [];
+
+function pfCategoryLabel(key){
+  return veloraCategoryLabel(pfCategories, key, veloraGetLang()) || key;
 }
 
 function pfShowMsg(type, text){
@@ -22,6 +19,7 @@ async function pfLoadGrid(){
   const grid = document.getElementById("pf-grid");
   if (!grid) return;
   grid.innerHTML = '<div class="loader"></div>';
+  pfCategories = await veloraFetchCategories();
 
   const { collection, getDocs, query, orderBy, deleteDoc, doc } = window.veloraFirestoreMod;
   let snap;
@@ -101,8 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const category = document.getElementById("pf-category").value;
       const file = fileInput.files[0];
 
-      if (!title || !file) {
-        pfShowMsg("error", "Please add a title and choose a photo.");
+      if (!title || !category || !file) {
+        pfShowMsg("error", "Please add a title, pick a tab, and choose a photo.");
         return;
       }
 

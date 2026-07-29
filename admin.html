@@ -91,6 +91,24 @@
       <p style="font-size:0.9rem;">Add, and remove the photos shown in your public gallery (Home + Portfolio pages).</p>
 
       <div class="form-card" style="max-width:100%;margin:0 0 30px;">
+        <h4 style="margin-bottom:6px;" data-i18n="admin.catManagerTitle">Manage Gallery Tabs</h4>
+        <p class="hint" style="margin-bottom:14px;" data-i18n="admin.catManagerHint">Rename, add or remove the category tabs shown on your Portfolio page.</p>
+        <div id="cat-list"></div>
+        <div class="form-row" style="margin-top:16px;">
+          <div class="field">
+            <label for="cat-en" data-i18n="admin.catLabelEn">Tab Name (English)</label>
+            <input type="text" id="cat-en" placeholder="e.g. Weddings">
+          </div>
+          <div class="field">
+            <label for="cat-ar" data-i18n="admin.catLabelAr">Tab Name (Arabic)</label>
+            <input type="text" id="cat-ar" placeholder="مثال: أفراح" dir="rtl">
+          </div>
+        </div>
+        <button id="cat-add-btn" type="button" class="btn btn-outline" data-i18n="admin.catAddBtn">Add Tab</button>
+        <div id="cat-msg" class="form-msg"></div>
+      </div>
+
+      <div class="form-card" style="max-width:100%;margin:0 0 30px;">
         <div class="form-row">
           <div class="field">
             <label for="pf-title">Title</label>
@@ -98,12 +116,7 @@
           </div>
           <div class="field">
             <label for="pf-category">Category</label>
-            <select id="pf-category">
-              <option value="portraits">Artistic Portraits</option>
-              <option value="street">Street Photography</option>
-              <option value="editorial">Editorial</option>
-              <option value="other">Other</option>
-            </select>
+            <select id="pf-category"></select>
           </div>
         </div>
         <div class="field">
@@ -199,7 +212,9 @@
 <script src="assets/js/image-utils.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/auth-guard.js"></script>
+<script src="assets/js/categories.js"></script>
 <script src="assets/js/admin.js"></script>
+<script src="assets/js/admin-categories.js"></script>
 <script src="assets/js/admin-portfolio.js"></script>
 <script src="assets/js/admin-settings.js"></script>
 </body>

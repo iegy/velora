@@ -58,6 +58,22 @@ async function veloraLoadPublicContent(){
     console.error("Velora public content: socials fetch failed", err);
   }
 
+  // --- Gallery category tabs (Portfolio page) ---
+  let categories = [];
+  try {
+    if (document.querySelector(".portfolio-filters")) {
+      categories = await veloraFetchCategories();
+      renderFilterTabs(categories);
+      // Tab labels aren't plain data-i18n text (they come from Firestore,
+      // keyed by language), so re-render them on language switch too.
+      document.querySelectorAll(".lang-toggle").forEach(btn => {
+        btn.addEventListener("click", () => renderFilterTabs(categories));
+      });
+    }
+  } catch (err) {
+    console.error("Velora public content: categories fetch failed", err);
+  }
+
   // --- Portfolio photos ---
   try {
     const snap = await getDocs(query(collection(window.veloraDb, "portfolio"), orderBy("createdAt", "desc")));
@@ -68,10 +84,31 @@ async function veloraLoadPublicContent(){
         const list = limit ? items.slice(0, limit) : items;
         grid.innerHTML = list.map(item => renderDynamicTile(item)).join("");
       });
+      if (typeof veloraWireLightbox === "function") veloraWireLightbox();
     }
   } catch (err) {
     console.error("Velora public content: portfolio fetch failed", err);
   }
+}
+
+function renderFilterTabs(categories){
+  const box = document.querySelector(".portfolio-filters");
+  if (!box) return;
+  const lang = veloraGetLang();
+  const allLabel = veloraT("portfolio.filterAll");
+  const activeBtn = box.querySelector(".filter-btn.active");
+  const activeFilter = activeBtn ? activeBtn.getAttribute("data-filter") : "all";
+
+  const buttons = ['<button class="filter-btn" data-filter="all">' + escapeHtml(allLabel) + "</button>"]
+    .concat(categories.map(c =>
+      '<button class="filter-btn" data-filter="' + escapeAttr(c.key) + '">' + escapeHtml(lang === "ar" ? (c.ar || c.en) : (c.en || c.ar)) + "</button>"
+    ));
+  box.innerHTML = buttons.join("");
+
+  const toActivate = box.querySelector('.filter-btn[data-filter="' + CSS.escape(activeFilter || "all") + '"]') || box.querySelector('.filter-btn[data-filter="all"]');
+  if (toActivate) toActivate.classList.add("active");
+
+  if (typeof veloraWireFilterButtons === "function") veloraWireFilterButtons();
 }
 
 function renderDynamicTile(item){

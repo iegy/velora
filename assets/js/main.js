@@ -1,4 +1,26 @@
 /* Shared site behaviour: mobile nav + footer year */
+
+/* Portfolio filter tabs. Re-attaches on demand (not just once at page
+   load) because the tab buttons themselves may be re-rendered from
+   Firestore categories after this first runs (see public-content.js) —
+   calling this again after that re-render is what makes the new buttons
+   clickable. Tiles are always re-queried fresh at click time, since the
+   gallery is also re-rendered dynamically. */
+function veloraWireFilterButtons(){
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filter = btn.getAttribute("data-filter");
+      document.querySelectorAll(".gallery-tile").forEach(tile => {
+        const cat = tile.getAttribute("data-category");
+        tile.style.display = (filter === "all" || cat === filter) ? "" : "none";
+      });
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
@@ -16,22 +38,5 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = new Date().getFullYear();
   });
 
-  // Portfolio filter tabs (no-op on pages without .filter-btn).
-  // Tiles are re-queried on every click (not cached) because the
-  // gallery may be re-rendered dynamically from Firestore after
-  // this listener is attached.
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  if (filterBtns.length) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const filter = btn.getAttribute("data-filter");
-        document.querySelectorAll(".gallery-tile").forEach(tile => {
-          const cat = tile.getAttribute("data-category");
-          tile.style.display = (filter === "all" || cat === filter) ? "" : "none";
-        });
-      });
-    });
-  }
+  veloraWireFilterButtons();
 });
