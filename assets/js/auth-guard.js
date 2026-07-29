@@ -7,7 +7,12 @@ async function veloraRequireAuth(onReady){
       '<a class="btn btn-outline" href="index.html">Back home</a></div></div>';
     return;
   }
-  await initVeloraFirebase();
+  try {
+    await initVeloraFirebase();
+  } catch (err) {
+    console.error("Velora: could not connect to Firebase.", err);
+    return;
+  }
   const { onAuthStateChanged, signOut } = window.veloraAuthMod;
   onAuthStateChanged(window.veloraAuth, (user) => {
     if (!user) {

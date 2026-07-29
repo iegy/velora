@@ -16,16 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = new Date().getFullYear();
   });
 
-  // Portfolio filter tabs (no-op on pages without .filter-btn)
+  // Portfolio filter tabs (no-op on pages without .filter-btn).
+  // Tiles are re-queried on every click (not cached) because the
+  // gallery may be re-rendered dynamically from Firestore after
+  // this listener is attached.
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const tiles = document.querySelectorAll(".gallery-tile");
-  if (filterBtns.length && tiles.length) {
+  if (filterBtns.length) {
     filterBtns.forEach(btn => {
       btn.addEventListener("click", () => {
         filterBtns.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         const filter = btn.getAttribute("data-filter");
-        tiles.forEach(tile => {
+        document.querySelectorAll(".gallery-tile").forEach(tile => {
           const cat = tile.getAttribute("data-category");
           tile.style.display = (filter === "all" || cat === filter) ? "" : "none";
         });

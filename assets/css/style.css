@@ -127,6 +127,8 @@ html[lang="ar"] .eyebrow{ letter-spacing: 1px; }
   color: var(--c-text);
 }
 html[lang="ar"] .brand .wordmark{ font-family: var(--font-ar); }
+.brand img.brand-logo-img{ width: auto; height: 34px; }
+@media (max-width: 480px){ .brand img.brand-logo-img{ height: 28px; } }
 
 .nav-links{
   display:flex; align-items:center; gap: 30px;
@@ -389,6 +391,21 @@ tr:hover td{ background: #faf9f6; }
   animation: spin 0.8s linear infinite; margin: 0 auto;
 }
 @keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* ---------- Dynamic gallery tiles (real photos from admin) ---------- */
+.gallery-tile.tile-dynamic{ background-size: cover; background-position: center; }
+.tile-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.6) 100%);
+}
+
+/* ---------- Admin sub-navigation ---------- */
+.admin-subnav{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:34px; }
+.admin-subnav a{
+  padding:8px 18px; border-radius:999px; border:1.5px solid var(--c-border);
+  font-size:0.85rem; font-weight:600; color: var(--c-text-soft); transition: var(--transition);
+}
+.admin-subnav a:hover{ background: var(--c-text); color:#fff; border-color: var(--c-text); }
 
 /* Utility */
 .mt-40{ margin-top: 40px; }

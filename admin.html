@@ -15,8 +15,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="index.html">
-      <img src="assets/images/logo-mark.svg" alt="Velora logo">
-      <span class="wordmark">Velora</span>
+      <img src="assets/images/velora-logo.png" alt="Velora" class="brand-logo-img">
     </a>
     <ul class="nav-links"></ul>
     <div class="nav-actions">
@@ -37,6 +36,13 @@
       <button id="logout-btn" class="btn btn-outline" data-i18n="admin.logout">Log Out</button>
     </div>
 
+    <div class="admin-subnav">
+      <a href="#contacts-section">Contacts &amp; Bookings</a>
+      <a href="#portfolio-manager">Manage Portfolio</a>
+      <a href="#settings-manager">Contact &amp; Social Links</a>
+    </div>
+
+    <div id="contacts-section"></div>
     <div id="loading-state" class="text-center" style="padding:60px 0;">
       <div class="loader"></div>
       <p data-i18n="admin.loading">Loading your contacts...</p>
@@ -78,14 +84,93 @@
       </div>
     </div>
 
+    <div id="portfolio-manager" class="mt-40" style="padding-top:20px;border-top:1px solid var(--c-border);">
+      <h3>Manage Portfolio</h3>
+      <p style="font-size:0.9rem;">Add, and remove the photos shown in your public gallery (Home + Portfolio pages).</p>
+
+      <div class="form-card" style="max-width:100%;margin:0 0 30px;">
+        <div class="form-row">
+          <div class="field">
+            <label for="pf-title">Title</label>
+            <input type="text" id="pf-title" placeholder="e.g. Golden Hour Portrait">
+          </div>
+          <div class="field">
+            <label for="pf-category">Category</label>
+            <select id="pf-category">
+              <option value="portraits">Artistic Portraits</option>
+              <option value="street">Street Photography</option>
+              <option value="editorial">Editorial</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="pf-file">Photo</label>
+          <input type="file" id="pf-file" accept="image/*">
+          <p class="hint">Your photo is automatically resized/compressed before saving — no need to edit it yourself.</p>
+          <div id="pf-preview"></div>
+        </div>
+        <button id="pf-add-btn" type="button" class="btn btn-primary">Add to Gallery</button>
+        <div id="pf-msg" class="form-msg"></div>
+      </div>
+
+      <div id="pf-grid" class="grid grid-4"></div>
+    </div>
+
+    <div id="settings-manager" class="mt-40" style="padding-top:20px;border-top:1px solid var(--c-border);">
+      <h3>Contact &amp; Social Links</h3>
+      <p style="font-size:0.9rem;">Shown in the footer and Contact page of your public site.</p>
+
+      <div class="form-card" style="max-width:100%;margin:0 0 24px;">
+        <div class="form-row">
+          <div class="field">
+            <label for="set-email">Email</label>
+            <input type="email" id="set-email" placeholder="hello@velora-studio.com">
+          </div>
+          <div class="field">
+            <label for="set-phone">Phone / WhatsApp</label>
+            <input type="tel" id="set-phone" placeholder="+20 100 000 0000">
+          </div>
+        </div>
+        <button id="set-save-btn" type="button" class="btn btn-primary">Save</button>
+        <div id="set-msg" class="form-msg"></div>
+      </div>
+
+      <div class="form-card" style="max-width:100%;">
+        <h4 style="margin-bottom:6px;">Social Links</h4>
+        <div id="social-list"></div>
+        <div class="form-row" style="margin-top:20px;">
+          <div class="field">
+            <label for="soc-platform">Platform</label>
+            <select id="soc-platform">
+              <option value="instagram">Instagram</option>
+              <option value="facebook">Facebook</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="tiktok">TikTok</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="soc-url">Link (URL)</label>
+            <input type="url" id="soc-url" placeholder="https://instagram.com/velora">
+          </div>
+        </div>
+        <button id="soc-add-btn" type="button" class="btn btn-outline">Add Link</button>
+        <div id="soc-msg" class="form-msg"></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/governorates.js"></script>
 <script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/image-utils.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/auth-guard.js"></script>
 <script src="assets/js/admin.js"></script>
+<script src="assets/js/admin-portfolio.js"></script>
+<script src="assets/js/admin-settings.js"></script>
 </body>
 </html>
