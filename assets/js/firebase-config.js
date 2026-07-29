@@ -1,21 +1,17 @@
 /* =========================================================
    Velora — Firebase configuration
    ---------------------------------------------------------
-   1. Create a FREE Firebase project at https://console.firebase.google.com
-   2. Add a Web App inside it, then copy the config object it gives you
-      and paste the values below (replace every "REPLACE_ME...").
-   3. Enable "Firestore Database" (Production or Test mode) and
-      "Authentication" -> Email/Password sign-in method.
-   Full step-by-step instructions are in README.md.
+   Connected to the "velora-studio-524f9" Firebase project.
+   Full setup steps (Firestore, Auth, rules) are in README.md.
    ========================================================= */
 
 const firebaseConfig = {
-  apiKey: "REPLACE_ME_API_KEY",
-  authDomain: "REPLACE_ME.firebaseapp.com",
-  projectId: "REPLACE_ME_PROJECT_ID",
-  storageBucket: "REPLACE_ME.appspot.com",
-  messagingSenderId: "REPLACE_ME_SENDER_ID",
-  appId: "REPLACE_ME_APP_ID"
+  apiKey: "AIzaSyC_RT_2BcXCDweJcMQh8-5ghpO0oQwZXNU",
+  authDomain: "velora-studio-524f9.firebaseapp.com",
+  projectId: "velora-studio-524f9",
+  storageBucket: "velora-studio-524f9.firebasestorage.app",
+  messagingSenderId: "620266734030",
+  appId: "1:620266734030:web:4bcf0ef81578216a1cab9f"
 };
 
 const FIREBASE_IS_CONFIGURED = !Object.values(firebaseConfig)
