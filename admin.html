@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Dashboard — Velora</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body id="admin-dashboard">
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo-mark.svg" alt="Velora logo">
+      <span class="wordmark">Velora</span>
+    </a>
+    <ul class="nav-links"></ul>
+    <div class="nav-actions">
+      <button class="lang-toggle" type="button">AR</button>
+    </div>
+  </nav>
+</header>
+
+<section class="section-sm">
+  <div class="container">
+
+    <div class="admin-header">
+      <div>
+        <span class="eyebrow" data-i18n="admin.title">Studio Dashboard</span>
+        <h1 style="margin:0;" data-i18n="admin.welcome">Welcome back</h1>
+        <p style="margin:4px 0 0;font-size:0.9rem;" id="admin-email"></p>
+      </div>
+      <button id="logout-btn" class="btn btn-outline" data-i18n="admin.logout">Log Out</button>
+    </div>
+
+    <div id="loading-state" class="text-center" style="padding:60px 0;">
+      <div class="loader"></div>
+      <p data-i18n="admin.loading">Loading your contacts...</p>
+    </div>
+
+    <div id="dashboard-content" style="display:none;">
+      <div class="stat-row">
+        <div class="stat-card"><div class="num" id="stat-total">0</div><div class="lbl" data-i18n="admin.statTotal">Total Contacts</div></div>
+        <div class="stat-card"><div class="num" id="stat-bookings">0</div><div class="lbl" data-i18n="admin.statBookings">Booking Requests</div></div>
+        <div class="stat-card"><div class="num" id="stat-contacts">0</div><div class="lbl" data-i18n="admin.statContacts">Stay-in-Touch</div></div>
+        <div class="stat-card"><div class="num" id="stat-upcoming">0</div><div class="lbl" data-i18n="admin.statUpcoming">Birthdays in 30 Days</div></div>
+      </div>
+
+      <h3 data-i18n="admin.upcomingTitle">Upcoming Birthdays</h3>
+      <div id="upcoming-list" class="mt-40" style="margin-bottom:40px;"></div>
+
+      <h3 data-i18n="admin.tableTitle">All Registrations</h3>
+      <div class="toolbar">
+        <input type="search" id="search-input" data-i18n-ph="admin.searchPh" placeholder="Search by name, phone, email...">
+        <button id="export-btn" class="btn btn-primary" data-i18n="admin.exportBtn">Export CSV</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name" data-i18n="admin.colName">Name</th>
+              <th data-sort="birthdate" data-i18n="admin.colBirthdate">Birthdate</th>
+              <th data-sort="governorate" data-i18n="admin.colGovernorate">Governorate</th>
+              <th data-sort="city" data-i18n="admin.colCity">City</th>
+              <th data-sort="phone" data-i18n="admin.colPhone">Phone</th>
+              <th data-sort="email" data-i18n="admin.colEmail">Email</th>
+              <th data-sort="purpose" data-i18n="admin.colPurpose">Purpose</th>
+              <th data-sort="createdAt" data-i18n="admin.colSubmitted">Submitted</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/governorates.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/auth-guard.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

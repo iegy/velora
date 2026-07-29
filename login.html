@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Login — Velora</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo-mark.svg" alt="Velora logo">
+      <span class="wordmark">Velora</span>
+    </a>
+    <ul class="nav-links"></ul>
+    <div class="nav-actions">
+      <button class="lang-toggle" type="button">AR</button>
+    </div>
+  </nav>
+</header>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <img src="assets/images/logo-mark.svg" alt="Velora">
+    <span class="eyebrow" data-i18n="login.eyebrow">Admin</span>
+    <h2 data-i18n="login.title">Studio Login</h2>
+    <p data-i18n="login.subtitle">For Velora's team only.</p>
+
+    <form id="login-form">
+      <div class="field">
+        <label for="login-email" data-i18n="login.labelEmail">Email</label>
+        <input type="email" id="login-email" name="login-email" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="login-password" data-i18n="login.labelPassword">Password</label>
+        <input type="password" id="login-password" name="login-password" required autocomplete="current-password">
+      </div>
+      <button type="submit" id="login-submit" class="btn btn-primary btn-block" data-i18n="login.submitBtn">Log In</button>
+      <div id="login-msg" class="form-msg"></div>
+    </form>
+
+    <p class="mt-40" style="font-size:0.85rem;">
+      <a href="index.html" data-i18n="login.back">Back to homepage</a>
+    </p>
+  </div>
+</div>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/governorates.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/login.js"></script>
+</body>
+</html>
