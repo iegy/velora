@@ -71,12 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
       message: document.getElementById("message").value.trim()
     };
 
-    if (!data.name || !data.birthdate || !data.governorate || !data.city || !data.phone || !data.email) {
-      showMsg("error", veloraT("booking.errorMsg"));
+    // Every field is required. Session type / preferred date only apply
+    // (and are only visible) when the visitor picked "Book a session" —
+    // for "Just stay in touch" they stay hidden and aren't demanded.
+    const isBooking = data.purpose === "book";
+    const missingRequired =
+      !data.name || !data.birthdate || !data.governorate || !data.city ||
+      !data.phone || !data.email || !data.message ||
+      (isBooking && (!data.sessionType || !data.preferredDate));
+
+    if (missingRequired) {
+      showMsg("error", veloraT("booking.missingFieldsMsg"));
       return;
     }
     if (!PHONE_RE.test(data.phone.replace(/\s|-/g, ""))) {
-      showMsg("error", veloraT("booking.errorMsg"));
+      showMsg("error", veloraT("booking.invalidPhoneMsg"));
       return;
     }
 

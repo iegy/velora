@@ -16,7 +16,6 @@
   <nav class="nav">
     <a class="brand" href="index.html">
       <img src="assets/images/velora-logo.png" alt="Velora" class="brand-logo-img">
-      <span class="wordmark" data-i18n="brand.name">Velora</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" data-i18n="nav.home">Home</a></li>
@@ -102,22 +101,22 @@
         <div class="form-row">
           <div class="field" id="session-type-field">
             <label for="session-type" data-i18n="booking.labelSessionType">Preferred Session Type</label>
-            <select id="session-type" name="session-type">
-              <option value="" data-i18n="booking.phSessionType">Select a type (optional)</option>
+            <select id="session-type" name="session-type" required>
+              <option value="" data-i18n="booking.phSessionType">Select a type</option>
               <option value="portrait" data-i18n="booking.optPortrait">Artistic Portraits</option>
               <option value="street" data-i18n="booking.optStreet">Street Photography</option>
               <option value="other" data-i18n="booking.optOther">Not sure yet</option>
             </select>
           </div>
           <div class="field" id="preferred-date-field">
-            <label for="preferred-date" data-i18n="booking.labelPreferredDate">Preferred Date (optional)</label>
-            <input type="date" id="preferred-date" name="preferred-date">
+            <label for="preferred-date" data-i18n="booking.labelPreferredDate">Preferred Date</label>
+            <input type="date" id="preferred-date" name="preferred-date" required>
           </div>
         </div>
 
         <div class="field">
-          <label for="message" data-i18n="booking.labelMessage">Message (optional)</label>
-          <textarea id="message" name="message" data-i18n-ph="booking.phMessage" placeholder="Tell us anything else..."></textarea>
+          <label for="message" data-i18n="booking.labelMessage">Message</label>
+          <textarea id="message" name="message" required data-i18n-ph="booking.phMessage" placeholder="Tell us anything else..."></textarea>
         </div>
 
         <div class="field checkbox-field">
