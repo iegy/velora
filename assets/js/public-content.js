@@ -21,13 +21,18 @@ async function veloraLoadPublicContent(){
   }
   const { doc, getDoc, collection, getDocs, query, orderBy } = window.veloraFirestoreMod;
 
-  // --- Contact info (email / phone) ---
+  // --- Contact info (email / phone) + homepage hero photo ---
   try {
     const snap = await getDoc(doc(window.veloraDb, "settings", "site"));
     if (snap.exists()) {
       const data = snap.data();
       if (data.email) document.querySelectorAll('[data-dynamic="email"]').forEach(el => el.textContent = data.email);
       if (data.phone) document.querySelectorAll('[data-dynamic="phone"]').forEach(el => el.textContent = data.phone);
+      const heroEl = document.getElementById("home-hero");
+      if (heroEl && data.heroImage) {
+        heroEl.classList.add("has-photo");
+        heroEl.style.backgroundImage = "url('" + data.heroImage + "')";
+      }
     }
   } catch (err) {
     console.error("Velora public content: settings fetch failed", err);

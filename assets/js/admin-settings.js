@@ -66,12 +66,33 @@ async function loadSocialList(){
 
 document.addEventListener("DOMContentLoaded", () => {
   const section = document.getElementById("settings-manager");
-  if (!section) return;
+  const portfolioSection = document.getElementById("portfolio-manager");
+  if (!section && !portfolioSection) return;
 
   const emailInput = document.getElementById("set-email");
   const phoneInput = document.getElementById("set-phone");
   const saveBtn = document.getElementById("set-save-btn");
   const socAddBtn = document.getElementById("soc-add-btn");
+
+  const heroFile = document.getElementById("hero-file");
+  const heroPreview = document.getElementById("hero-preview");
+  const heroCurrentPreview = document.getElementById("hero-current-preview");
+  const heroSaveBtn = document.getElementById("hero-save-btn");
+  const heroRemoveBtn = document.getElementById("hero-remove-btn");
+
+  if (heroFile) {
+    heroFile.addEventListener("change", () => {
+      heroPreview.innerHTML = "";
+      const file = heroFile.files[0];
+      if (!file) return;
+      const img = document.createElement("img");
+      img.style.maxWidth = "220px";
+      img.style.borderRadius = "10px";
+      img.style.marginTop = "10px";
+      img.src = URL.createObjectURL(file);
+      heroPreview.appendChild(img);
+    });
+  }
 
   veloraRequireAuth(async () => {
     const { doc, getDoc, setDoc, collection, addDoc, serverTimestamp } = window.veloraFirestoreMod;
@@ -80,13 +101,61 @@ document.addEventListener("DOMContentLoaded", () => {
       const snap = await getDoc(doc(window.veloraDb, "settings", "site"));
       if (snap.exists()) {
         const data = snap.data();
-        emailInput.value = data.email || "";
-        phoneInput.value = data.phone || "";
+        if (emailInput) emailInput.value = data.email || "";
+        if (phoneInput) phoneInput.value = data.phone || "";
+        if (heroCurrentPreview && data.heroImage) {
+          heroCurrentPreview.innerHTML = '<p class="hint">Current photo:</p><img src="' + data.heroImage + '" style="max-width:220px;border-radius:10px;margin-bottom:14px;">';
+        }
       }
     } catch (err) {
       console.error("Velora settings load error:", err);
     }
 
+    if (heroSaveBtn) {
+      heroSaveBtn.addEventListener("click", async () => {
+        const file = heroFile.files[0];
+        if (!file) {
+          setShowMsg("hero-msg", "error", "Please choose a photo first.");
+          return;
+        }
+        heroSaveBtn.disabled = true;
+        heroSaveBtn.textContent = "Saving...";
+        try {
+          const { dataUrl } = await compressImageToDataUrl(file, 900000);
+          await setDoc(doc(window.veloraDb, "settings", "site"), { heroImage: dataUrl }, { merge: true });
+          setShowMsg("hero-msg", "success", "Hero photo updated! Check your homepage.");
+          heroCurrentPreview.innerHTML = '<p class="hint">Current photo:</p><img src="' + dataUrl + '" style="max-width:220px;border-radius:10px;margin-bottom:14px;">';
+          heroFile.value = "";
+          heroPreview.innerHTML = "";
+        } catch (err) {
+          console.error("Velora hero photo save error:", err);
+          if (err && err.message === "IMAGE_TOO_LARGE") {
+            setShowMsg("hero-msg", "error", "This photo is too large even after compression — try a smaller image.");
+          } else {
+            setShowMsg("hero-msg", "error", "Something went wrong. Please try again.");
+          }
+        } finally {
+          heroSaveBtn.disabled = false;
+          heroSaveBtn.textContent = "Save Hero Photo";
+        }
+      });
+    }
+
+    if (heroRemoveBtn) {
+      heroRemoveBtn.addEventListener("click", async () => {
+        if (!window.confirm("Remove the hero photo and go back to the default design?")) return;
+        try {
+          await setDoc(doc(window.veloraDb, "settings", "site"), { heroImage: "" }, { merge: true });
+          heroCurrentPreview.innerHTML = "";
+          setShowMsg("hero-msg", "success", "Hero photo removed.");
+        } catch (err) {
+          console.error("Velora hero photo remove error:", err);
+          setShowMsg("hero-msg", "error", "Something went wrong. Please try again.");
+        }
+      });
+    }
+
+    if (!section) return;
     await loadSocialList();
 
     saveBtn.addEventListener("click", async () => {

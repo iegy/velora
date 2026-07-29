@@ -185,6 +185,14 @@ html[lang="ar"] .brand .wordmark{ font-family: var(--font-ar); }
 .hero-blob.b2{ width:260px; height:260px; background: var(--c-orange); bottom:-100px; left:-80px; animation-delay: 2s; }
 @keyframes float{ 0%,100%{ transform: translateY(0) scale(1); } 50%{ transform: translateY(-22px) scale(1.05); } }
 
+.hero.has-photo{ background-size: cover; background-position: center; }
+.hero.has-photo::after{
+  content:''; position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(20,18,15,0.45), rgba(20,18,15,0.6));
+}
+.hero.has-photo .hero-blob{ display:none; }
+.hero.has-photo h1, .hero.has-photo .hero-sub{ color:#fff; }
+.hero.has-photo .hero-sub{ color: rgba(255,255,255,0.9); }
 .hero-inner{ position:relative; z-index:2; text-align:center; max-width: 780px; margin: 0 auto; }
 .hero-mark{ width: 74px; height:74px; margin: 0 auto 22px; opacity:0.9; }
 .hero h1{ font-size: clamp(2.3rem, 5vw, 3.6rem); margin-bottom: 14px; }

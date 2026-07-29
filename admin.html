@@ -115,6 +115,20 @@
       </div>
 
       <div id="pf-grid" class="grid grid-4"></div>
+
+      <div class="form-card" style="max-width:100%;margin-top:30px;">
+        <h4 style="margin-bottom:6px;">Homepage Hero Photo</h4>
+        <p class="hint" style="margin-bottom:14px;">The big photo behind your slogan at the very top of the homepage. Leave empty to keep the current soft color design.</p>
+        <div id="hero-current-preview"></div>
+        <div class="field">
+          <label for="hero-file">Photo</label>
+          <input type="file" id="hero-file" accept="image/*">
+          <div id="hero-preview"></div>
+        </div>
+        <button id="hero-save-btn" type="button" class="btn btn-primary">Save Hero Photo</button>
+        <button id="hero-remove-btn" type="button" class="btn btn-outline" style="margin-inline-start:10px;">Remove Photo</button>
+        <div id="hero-msg" class="form-msg"></div>
+      </div>
     </div>
 
     <div id="settings-manager" class="mt-40" style="padding-top:20px;border-top:1px solid var(--c-border);">
